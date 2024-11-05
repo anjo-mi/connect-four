@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,83 +7,65 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <section class="heading">
-        <h1 class="title"></h1>
-        <section class="records">
-            <h4 class="wins"></h4>
-            <div class="red-wins"></div>
-            <div class="yellow-wins"></div>
-        </section>
-    </section>
+  <h1>Connect 4</h1>
+  
+  <div class="score-container">
+    <div class="score-box red-score">Red: 0</div>
+    <svg class="turn-indicator" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="red"/>
+    </svg>
+    <div class="score-box yellow-score">Yellow: 0</div>
+  </div>
 
-    <div class="game-board">
-        <div class="sleeves">
-            <section class="zero">
-                <section><img src="images/red.png" alt=""></section>
-                <section><img src="images/yellow.png" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-            </section>
-            <section class="one">lllolololololol
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-            </section>
-            <section class="two">
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-            </section>
-            <section class="three">
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-            </section>
-            <section class="four">
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-            </section>
-            <section class="five">
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-            </section>
-            <section class="six">
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-                <section><img src="" alt=""></section>
-            </section>
-        </div>
-    </div>
-
-    <script src="js/main.js"></script>
+  <div class="board">
+    <!-- Generate 6 rows of 7 cells each -->
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
 </body>
 </html>
