@@ -7,10 +7,11 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 20px;
+    background: rgb(236, 181, 28);
   }
 
   h1 {
-    color: #333;
+    color: #0c87ebde;
     margin-bottom: 20px;
   }
 
@@ -56,6 +57,12 @@ body {
     grid-template-columns: repeat(7, 1fr);
     gap: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .column{
+    display: flex;
+    flex-direction: column-reverse;
+    
   }
 
   .cell {
