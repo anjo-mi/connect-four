@@ -1,7 +1,10 @@
 
 
 class ConnectFour{
+    #board
     constructor(first){
+        this.gameOver = false
+        this.winner = 'Draw'
         this.board = document.querySelectorAll('.column')
         this.currentPlayer = first || 'yellow-chip';
         this.fillBoard()
@@ -14,6 +17,12 @@ class ConnectFour{
             'five': 5,
             'six': 6
         }
+    }
+
+    setBoard(){
+        console.log('Setting board')
+        this.#board = Array.from({length: 7}, () => Array.from({length: 6}, () => null))
+        console.log(this.#board)
     }
 
     fillBoard(){
@@ -48,9 +57,54 @@ class ConnectFour{
                 column[--i].classList.add(this.currentPlayer)
             }else{
                 clearInterval(drop)
+                console.log(num,i)
+                this.updateBoard(num,i)
             }
         }, 150)
     }
+
+    updateBoard(num,i){
+        this.#board[num][i] = this.currentPlayer
+        console.log(this.#board)
+        this.checkWin(num, i , this.currentPlayer)
+    }
+
+    checkWin(x, y, color){
+        const directions = [
+            [0, 1],
+            [1, 0],
+            [1, 1],
+            [1, -1]
+        ]
+
+        for (let [dx, dy] of directions) {
+            let count = 1
+
+            for (let i = 1 ; i < 4; i++) {
+                let nx = x + i * dx
+                let ny = y + i * dy
+                if (nx < 0 || nx >= 7 || ny < 0 || ny >= 6) break
+                if (this.#board[nx][ny] !== color) break
+                count++
+            }
+
+            for (let i = 1 ; i < 4; i++) {
+                let nx = x - i * dx
+                let ny = y - i * dy
+                if (nx < 0 || nx >= 7 || ny < 0 || ny >= 6) break
+                if (this.#board[nx][ny] !== color) break
+                count++
+            }
+
+            if (count >= 4) {
+                this.winner = color === 'red-chip' ? 'Red' : 'Yellow'
+                this.gameOver = true
+                console.log(this.winner, this.gameOver)
+            }else{
+                this.currentPlayer = color === 'red-chip' ? 'yellow-chip' : 'red-chip'
+            }
+        }
+    }
 }
 
-const game = new ConnectFour();
+const game = new ConnectFour().setBoard();
