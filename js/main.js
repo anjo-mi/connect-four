@@ -7,7 +7,6 @@ class ConnectFour{
         this.winner = 'Draw'
         this.board = document.querySelectorAll('.column')
         this.currentPlayer = first || 'yellow-chip';
-        this.fillBoard()
         this.colConverter = {
             'zero': 0,
             'one': 1,
@@ -17,33 +16,35 @@ class ConnectFour{
             'five': 5,
             'six': 6
         }
+        this.handleClick = this.handleClick.bind(this)
+        this.fillBoard()
     }
 
     setBoard(){
-        console.log('Setting board')
         this.#board = Array.from({length: 7}, () => Array.from({length: 6}, () => null))
-        console.log(this.#board)
+    }
+
+    handleClick(event){
+        const number = (this.colConverter[event.currentTarget.classList[0]])
+        this.checkSpace(number)
     }
 
     fillBoard(){
-        console.log(this.board)
+        console.log('board filling')
         this.board.forEach(column => {
             column.querySelectorAll('.cell').forEach(cell => {
                 cell.classList.remove('red-chip', 'yellow-chip')
             })
-            column.addEventListener('click', (e) => {
-                const number = this.colConverter[e.currentTarget.classList[0]]
-                console.log(number)
-                this.checkSpace(number)
-            })
+            console.log(column)
+            column.addEventListener('click', this.handleClick)
         })
         this.board = Array.from(this.board)
+        console.log('board filt')
     }
 
     checkSpace(num){
         let i = 5
         const column = this.board[num].querySelectorAll('div')
-        console.log(column)
 
         if (column[i].classList.contains('red-chip') || column[i].classList.contains('yellow-chip')) {
             return
@@ -65,7 +66,6 @@ class ConnectFour{
 
     updateBoard(num,i){
         this.#board[num][i] = this.currentPlayer
-        console.log(this.#board)
         this.checkWin(num, i , this.currentPlayer)
     }
 
