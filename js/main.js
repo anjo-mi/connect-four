@@ -2,6 +2,7 @@
 
 class ConnectFour{
     #board
+    #disableMove = false
     constructor(first){
         this.gameOver = false
         this.winner = 'Draw'
@@ -26,7 +27,8 @@ class ConnectFour{
     }
 
     handleClick(event){
-        if (this.gameOver) return
+        if (this.#disableMove || this.gameOver) return
+        this.board.forEach(column => column.removeEventListener('click', this.handleClick))
         const number = (this.colConverter[event.currentTarget.classList[0]])
         this.checkSpace(number)
     }
@@ -40,7 +42,7 @@ class ConnectFour{
             console.log(column)
             column.addEventListener('click', this.handleClick)
         })
-        this.board = Array.from(this.board)
+        // this.board = Array.from(this.board)
         console.log('board filt')
     }
 
@@ -57,8 +59,10 @@ class ConnectFour{
         const column = this.board[num].querySelectorAll('div')
 
         if (column[i].classList.contains('red-chip') || column[i].classList.contains('yellow-chip')) {
+            this.board.forEach(column => column.addEventListener('click', this.handleClick))
             return
         }else{
+            this.#disableMove = true
             column[i].classList.add(this.currentPlayer)
         }
         
@@ -70,8 +74,10 @@ class ConnectFour{
                 clearInterval(drop)
                 console.log(num,i)
                 this.updateBoard(num,i)
+                this.#disableMove = false
             }
         }, 150)
+        this.board.forEach(column => column.addEventListener('click', this.handleClick))
     }
 
     updateBoard(num,i){
@@ -107,6 +113,7 @@ class ConnectFour{
             }
 
             if (count >= 4) {
+                this.board.forEach(column => column.removeEventListener('click', this.handleClick))
                 this.winner = color === 'red-chip' ? 'Red' : 'Yellow'
                 this.winner === 'Red' ? score.redWin() : score.yellowWin()
                 this.gameOver = true
