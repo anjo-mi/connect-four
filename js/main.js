@@ -18,6 +18,7 @@ class ConnectFour{
         }
         this.handleClick = this.handleClick.bind(this)
         this.fillBoard()
+        this.setTurn()
     }
 
     setBoard(){
@@ -25,6 +26,7 @@ class ConnectFour{
     }
 
     handleClick(event){
+        if (this.gameOver) return
         const number = (this.colConverter[event.currentTarget.classList[0]])
         this.checkSpace(number)
     }
@@ -40,6 +42,14 @@ class ConnectFour{
         })
         this.board = Array.from(this.board)
         console.log('board filt')
+    }
+
+    setTurn(){
+        if (this.currentPlayer === 'yellow-chip') {
+            document.querySelector('.turn-indicator circle').style.fill = 'yellow'
+        }else{
+            document.querySelector('.turn-indicator circle').style.fill = 'red'
+        }
     }
 
     checkSpace(num){
@@ -102,6 +112,7 @@ class ConnectFour{
                 console.log(this.winner, this.gameOver)
             }else{
                 this.currentPlayer = color === 'red-chip' ? 'yellow-chip' : 'red-chip'
+                this.setTurn()
             }
         }
     }
