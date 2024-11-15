@@ -108,8 +108,10 @@ class ConnectFour{
 
             if (count >= 4) {
                 this.winner = color === 'red-chip' ? 'Red' : 'Yellow'
+                this.winner === 'Red' ? score.redWin() : score.yellowWin()
                 this.gameOver = true
                 console.log(this.winner, this.gameOver)
+                startGame()
             }else{
                 this.currentPlayer = color === 'red-chip' ? 'yellow-chip' : 'red-chip'
                 this.setTurn()
@@ -118,4 +120,26 @@ class ConnectFour{
     }
 }
 
-const game = new ConnectFour().setBoard();
+
+class ScoreBoard{
+    constructor(){
+        this.redScore = document.querySelector('.red-score')
+        this.yellowScore = document.querySelector('.yellow-score')
+    }
+
+    yellowWin(){
+        this.yellowScore.textContent++
+    }
+
+    redWin(){
+        this.redScore.textContent++
+    }
+
+}
+
+function startGame(){
+    const game = new ConnectFour().setBoard();
+}
+
+document.addEventListener('DOMContentLoaded', startGame)
+const score = new ScoreBoard()
