@@ -111,7 +111,7 @@ class ConnectFour{
                 this.winner === 'Red' ? score.redWin() : score.yellowWin()
                 this.gameOver = true
                 console.log(this.winner, this.gameOver)
-                startGame()
+                setTimeout(startGame, 5000)
             }else{
                 this.currentPlayer = color === 'red-chip' ? 'yellow-chip' : 'red-chip'
                 this.setTurn()
